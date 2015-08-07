@@ -93,7 +93,7 @@ SimpleLinkedList & SimpleLinkedList::operator=(SimpleLinkedList && in) {
 	using std::move;
 	first = move(in.first);
 	last = move(in.last);
-	size = move(in.move);
+	size = move(in.size);
 	return *this;
 }
 
