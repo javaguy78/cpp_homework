@@ -32,7 +32,10 @@ SimpleLinkedList::SimpleLinkedList(SimpleLinkedList && in) {
 	first = in.first;
 	last = in.last;
 	size = in.size;
-	in = nullptr;
+
+	in.first = nullptr;
+	in.last = nullptr;
+	in.size = 0;
 }
 
 SimpleLinkedList::~SimpleLinkedList() {
@@ -87,9 +90,10 @@ SimpleLinkedList & SimpleLinkedList::operator=(const SimpleLinkedList & in) {
 }
 
 SimpleLinkedList & SimpleLinkedList::operator=(SimpleLinkedList && in) {
-	first = in.first;
-	last = in.last;
-	size = in.size;
+	using std::move;
+	first = move(in.first);
+	last = move(in.last);
+	size = move(in.move);
 	return *this;
 }
 
