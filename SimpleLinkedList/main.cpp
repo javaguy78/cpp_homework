@@ -16,7 +16,7 @@ int main() {
 	SimpleLinkedList copied = sll;
 	copied.add(2999);
 	cout << "Copied via Copy Constructor" << endl;
-	copied.printAll();
+	cout << copied;
 	cout << "Copied Size: " << copied.getSize() << endl;
 
 	SimpleLinkedList assignment;

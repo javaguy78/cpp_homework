@@ -15,11 +15,11 @@ public:
 	SimpleLinkedList(const SimpleLinkedList &);
 	SimpleLinkedList(SimpleLinkedList &&);
 	~SimpleLinkedList();
-	Element * getFirst();
+	Element * getFirst() const;
 	void add(int);
 	void addLast(int);
-	void printAll();
-	unsigned int getSize();
+	void printAll() const;
+	unsigned int getSize() const;
 	SimpleLinkedList & operator=(const SimpleLinkedList &);
 	SimpleLinkedList & operator=(SimpleLinkedList &&);
 	void swap(SimpleLinkedList &);
@@ -29,5 +29,7 @@ private:
 	Element * last;
 	unsigned int size;
 };
+
+std::ostream & operator<<(std::ostream&, const SimpleLinkedList&);
 
 #endif

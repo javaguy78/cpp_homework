@@ -61,25 +61,16 @@ void SimpleLinkedList::addLast(int i) {
 	}
 }
 
-unsigned int SimpleLinkedList::getSize() {
+unsigned int SimpleLinkedList::getSize() const {
 	return size;
 }
 
-Element * SimpleLinkedList::getFirst() {
+Element * SimpleLinkedList::getFirst() const {
 	return this->first;
 }
 
-void SimpleLinkedList::printAll() {
-	Element * tmp = this->first;
-	cout << "{";
-	while (tmp != nullptr) {
-		cout << tmp->i;
-		if (tmp->next != nullptr) {
-			cout << ",";
-		}
-		tmp = tmp->next;
-	};
-	cout << "}" << endl;
+void SimpleLinkedList::printAll() const {
+	cout << *this << endl;
 }
 
 SimpleLinkedList & SimpleLinkedList::operator=(const SimpleLinkedList & in) {
@@ -95,6 +86,20 @@ SimpleLinkedList & SimpleLinkedList::operator=(SimpleLinkedList && in) {
 	last = move(in.last);
 	size = move(in.size);
 	return *this;
+}
+
+std::ostream & operator<<(std::ostream& out, const SimpleLinkedList & sll) {
+	Element * tmp = sll.getFirst();
+	out << "{";
+	while (tmp != nullptr) {
+		out << tmp->i;
+		if (tmp->next != nullptr) {
+			out << ",";
+		}
+		tmp = tmp->next;
+	};
+	out << "}";
+	return out;
 }
 
 void SimpleLinkedList::swap(SimpleLinkedList & in) {
