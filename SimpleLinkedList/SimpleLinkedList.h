@@ -15,7 +15,7 @@ public:
 	SimpleLinkedList(const SimpleLinkedList &);
 	SimpleLinkedList(SimpleLinkedList &&);
 	~SimpleLinkedList();
-	Element * getFirst() const;
+	Element const * getFirst() const;
 	void add(int);
 	void addLast(int);
 	void printAll() const;
@@ -28,6 +28,7 @@ private:
 	Element * first;
 	Element * last;
 	unsigned int size;
+	void unwind();
 };
 
 std::ostream & operator<<(std::ostream&, const SimpleLinkedList&);

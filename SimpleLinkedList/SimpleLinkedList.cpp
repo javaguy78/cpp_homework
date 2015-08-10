@@ -14,17 +14,22 @@ SimpleLinkedList::SimpleLinkedList(int i) : SimpleLinkedList() {
 }
 
 SimpleLinkedList::SimpleLinkedList(const SimpleLinkedList & in) : SimpleLinkedList() {
-	if (in.first != nullptr) {
-		first = new Element(in.first->i);
-		Element * tmpLocal = first;
-		Element * tmpCopy = in.first;
-		while (tmpCopy->next != nullptr) {
-			tmpCopy = tmpCopy->next;
-			tmpLocal->next = new Element(tmpCopy->i);
-			tmpLocal = tmpLocal->next;
-			last = tmpLocal;
-			++size;
+	try {
+		if (in.first != nullptr) {
+			first = new Element(in.first->i);
+			auto * tmpLocal = first;
+			auto * tmpCopy = in.first;
+			while (tmpCopy->next != nullptr) {
+				tmpCopy = tmpCopy->next;
+				tmpLocal->next = new Element(tmpCopy->i);
+				tmpLocal = tmpLocal->next;
+				last = tmpLocal;
+				++size;
+			}
 		}
+	} catch (const std::bad_alloc & e) {
+		unwind();
+		throw;	
 	}
 }
 
@@ -39,12 +44,7 @@ SimpleLinkedList::SimpleLinkedList(SimpleLinkedList && in) {
 }
 
 SimpleLinkedList::~SimpleLinkedList() {
-	Element * tmp = first;
-	while (tmp != 0) {
-		first = first->next;
-		delete tmp;
-		tmp = first;
-	}
+	unwind();
 }
 
 void SimpleLinkedList::add(int i) {
@@ -65,7 +65,7 @@ unsigned int SimpleLinkedList::getSize() const {
 	return size;
 }
 
-Element * SimpleLinkedList::getFirst() const {
+Element const * SimpleLinkedList::getFirst() const {
 	return this->first;
 }
 
@@ -88,8 +88,8 @@ SimpleLinkedList & SimpleLinkedList::operator=(SimpleLinkedList && in) {
 	return *this;
 }
 
-std::ostream & operator<<(std::ostream& out, const SimpleLinkedList & sll) {
-	Element * tmp = sll.getFirst();
+std::ostream & operator<<(std::ostream & out, const SimpleLinkedList & sll) {
+	auto * tmp = sll.getFirst();
 	out << "{";
 	while (tmp != nullptr) {
 		out << tmp->i;
@@ -107,6 +107,15 @@ void SimpleLinkedList::swap(SimpleLinkedList & in) {
 	swap(this->first, in.first);
 	swap(this->last, in.last);
 	swap(this->size, in.size);
+}
+
+void SimpleLinkedList::unwind() {
+	auto * tmp = first;
+	while (tmp != 0) {
+		first = first->next;
+		delete tmp;
+		tmp = first;
+	}
 }
 
 Element::Element(int i) {
