@@ -10,20 +10,20 @@ int main() {
 	sll.addLast(1234);
 
 	cout << "Original List:" << endl;
-	sll.printAll();
+	cout << sll << endl;
 	cout << "Original Size: " << sll.getSize() << endl;
 
 	SimpleLinkedList copied = sll;
 	copied.add(2999);
 	cout << "Copied via Copy Constructor" << endl;
-	cout << copied;
+	cout << copied << endl;
 	cout << "Copied Size: " << copied.getSize() << endl;
 
 	SimpleLinkedList assignment;
 	assignment = sll;
 	assignment.add(5000);
 	cout << "Copied via Assignment Operator:" << endl;
-	assignment.printAll();
+	cout << assignment << endl;
 	cout << "Assignment Size: " << assignment.getSize() << endl;
 	
 	SimpleLinkedList empty = SimpleLinkedList();
@@ -31,12 +31,12 @@ int main() {
 	SimpleLinkedList emptyCopy3 = empty;
 	SimpleLinkedList emptyCopy17 = SimpleLinkedList(empty);
 	empty.addLast(3);
-	empty.printAll();
-	emptyCopy1.printAll();
-	emptyCopy3.printAll();
+	cout << empty << endl;
+	cout << emptyCopy1 << endl;
+	cout << emptyCopy3 << endl;
 	emptyCopy17 = emptyCopy3;
 	empty = empty; //self assignment test
-	empty.printAll();
+	cout << empty << endl;
 
 	return 0;
 
