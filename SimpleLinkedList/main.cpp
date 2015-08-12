@@ -3,8 +3,9 @@
 
 using namespace std;
 
-int main() {
-	SimpleLinkedList sll(1);
+SimpleLinkedList sll(1);
+
+void testNewObject() {
 	sll.add(13);
 	sll.add(1313);
 	sll.addLast(1234);
@@ -12,20 +13,26 @@ int main() {
 	cout << "Original List:" << endl;
 	cout << sll << endl;
 	cout << "Original Size: " << sll.getSize() << endl;
+}
 
-	SimpleLinkedList copied = sll;
+void testCopiedByCopyConstructor() {
+	SimpleLinkedList copied(sll);
 	copied.add(2999);
 	cout << "Copied via Copy Constructor" << endl;
 	cout << copied << endl;
 	cout << "Copied Size: " << copied.getSize() << endl;
+}
 
+void testCopiedByAssignmentOperator() {
 	SimpleLinkedList assignment;
 	assignment = sll;
 	assignment.add(5000);
 	cout << "Copied via Assignment Operator:" << endl;
 	cout << assignment << endl;
 	cout << "Assignment Size: " << assignment.getSize() << endl;
-	
+}
+
+void testAssignmentOfEmptyObjectToNewObject() {
 	SimpleLinkedList empty = SimpleLinkedList();
 	SimpleLinkedList emptyCopy1 = SimpleLinkedList(empty);
 	SimpleLinkedList emptyCopy3 = empty;
@@ -37,7 +44,18 @@ int main() {
 	emptyCopy17 = emptyCopy3;
 	empty = empty; //self assignment test
 	cout << empty << endl;
+}
+
+/////////////////////////////////////////////////////////////////////////
+/// PROGRAM ENTRY POINT                                   ///////////////
+/////////////////////////////////////////////////////////////////////////
+
+int main() {
+
+	testNewObject();
+	testCopiedByCopyConstructor();
+	testCopiedByAssignmentOperator();
+	testAssignmentOfEmptyObjectToNewObject();
 
 	return 0;
-
 }

@@ -2,10 +2,13 @@
 #ifndef SIMPLE_LINKED_LIST_H
 #define SIMPLE_LINKED_LIST_H
 
+template<typename T>
 struct Element {
 	Element * next;
-	int i;
-	Element(int);
+	T data;
+	Element(T t) : next{ nullptr } {
+		data = t;
+	}
 };
 
 class SimpleLinkedList {
@@ -15,7 +18,7 @@ public:
 	SimpleLinkedList(const SimpleLinkedList &);
 	SimpleLinkedList(SimpleLinkedList &&);
 	~SimpleLinkedList();
-	Element const * getFirst() const;
+	Element<int> const * getFirst() const;
 	void add(int);
 	void addLast(int);
 	void printAll() const;
@@ -25,8 +28,8 @@ public:
 	void swap(SimpleLinkedList &);
 
 private:
-	Element * first;
-	Element * last;
+	Element<int> * first;
+	Element<int> * last;
 	unsigned int size;
 	void unwind();
 };

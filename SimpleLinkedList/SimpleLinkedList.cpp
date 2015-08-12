@@ -9,25 +9,25 @@ SimpleLinkedList::SimpleLinkedList() :
 	size{ 0u } { }
 
 SimpleLinkedList::SimpleLinkedList(int i) : SimpleLinkedList() {
-	last = first = new Element(i);
+	last = first = new Element<int>(i);
 	++size;
 }
 
 SimpleLinkedList::SimpleLinkedList(const SimpleLinkedList & in) : SimpleLinkedList() {
 	try {
 		if (in.first != nullptr) {
-			first = new Element(in.first->i);
+			first = new Element<int>(in.first->data);
 			auto * tmpLocal = first;
 			auto * tmpCopy = in.first;
 			while (tmpCopy->next != nullptr) {
 				tmpCopy = tmpCopy->next;
-				tmpLocal->next = new Element(tmpCopy->i);
+				tmpLocal->next = new Element<int>(tmpCopy->data);
 				tmpLocal = tmpLocal->next;
 				last = tmpLocal;
 				++size;
 			}
 		}
-	} catch (const std::bad_alloc & e) {
+	} catch (...) {
 		unwind();
 		throw;	
 	}
@@ -53,9 +53,9 @@ void SimpleLinkedList::add(int i) {
 
 void SimpleLinkedList::addLast(int i) {
 	if (!first) {
-		last = first = new Element(i);
+		last = first = new Element<int>(i);
 	} else {
-		last->next = new Element(i);
+		last->next = new Element<int>(i);
 		last = last->next;
 		++size;
 	}
@@ -65,7 +65,7 @@ unsigned int SimpleLinkedList::getSize() const {
 	return size;
 }
 
-Element const * SimpleLinkedList::getFirst() const {
+Element<int> const * SimpleLinkedList::getFirst() const {
 	return this->first;
 }
 
@@ -91,9 +91,9 @@ SimpleLinkedList & SimpleLinkedList::operator=(SimpleLinkedList && in) {
 std::ostream & operator<<(std::ostream & out, const SimpleLinkedList & sll) {
 	auto * tmp = sll.getFirst();
 	out << "{";
-	while (tmp != nullptr) {
-		out << tmp->i;
-		if (tmp->next != nullptr) {
+	while (tmp) {
+		out << tmp->data;
+		if (tmp->next) {
 			out << ",";
 		}
 		tmp = tmp->next;
@@ -111,14 +111,9 @@ void SimpleLinkedList::swap(SimpleLinkedList & in) {
 
 void SimpleLinkedList::unwind() {
 	auto * tmp = first;
-	while (tmp != 0) {
+	while (tmp) {
 		first = first->next;
 		delete tmp;
 		tmp = first;
 	}
-}
-
-Element::Element(int i) {
-	this->i = i;
-	this->next = nullptr;
 }
