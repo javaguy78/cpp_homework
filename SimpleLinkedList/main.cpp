@@ -46,6 +46,13 @@ void testAssignmentOfEmptyObjectToNewObject() {
 	cout << empty << endl;
 }
 
+void scratch() {
+	Element<long> awesome(3.12L);
+	Element<std::string> strElement("Awesome String");
+	Element<SimpleLinkedList> sslElement(sll);
+	// I get it!
+}
+
 /////////////////////////////////////////////////////////////////////////
 /// PROGRAM ENTRY POINT                                   ///////////////
 /////////////////////////////////////////////////////////////////////////
