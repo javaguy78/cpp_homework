@@ -47,10 +47,12 @@ void testAssignmentOfEmptyObjectToNewObject() {
 }
 
 void scratch() {
-	Element<long> awesome(3.12L);
+	Element<long> longElement(3.12L);
+	Element<float> floatElement(3.14F);
 	Element<std::string> strElement("Awesome String");
 	Element<SimpleLinkedList> sslElement(sll);
 	// I get it!
+	return;
 }
 
 /////////////////////////////////////////////////////////////////////////
@@ -63,6 +65,8 @@ int main() {
 	testCopiedByCopyConstructor();
 	testCopiedByAssignmentOperator();
 	testAssignmentOfEmptyObjectToNewObject();
+
+	scratch();
 
 	return 0;
 }
