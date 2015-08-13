@@ -3,12 +3,12 @@
 
 using namespace std;
 
-SimpleLinkedList<double> sll(1.23);
+SimpleLinkedList<std::string> sll("test");
 
 void testNewObject() {
-	sll.add(2.34);
-	sll.add(3.45);
-	sll.addLast(4.56);
+	sll.add("two");
+	sll.add("three");
+	sll.addLast("djs");
 
 	cout << "Original List:" << endl;
 	cout << sll << endl;

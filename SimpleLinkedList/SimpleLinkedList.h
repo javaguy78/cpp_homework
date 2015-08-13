@@ -2,6 +2,8 @@
 #ifndef SIMPLE_LINKED_LIST_H
 #define SIMPLE_LINKED_LIST_H
 
+#include <string>
+
 template<typename T>
 struct Element {
 	Element * next;
