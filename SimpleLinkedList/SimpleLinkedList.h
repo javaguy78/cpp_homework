@@ -32,13 +32,13 @@ public:
         {
             if (in.first != nullptr) 
             {
-                first = new Element<int>(in.first->data);
+                first = new Element<T>(in.first->data);
                 auto * tmpLocal = first;
                 auto * tmpCopy = in.first;
                 while (tmpCopy->next != nullptr) 
                 {
                     tmpCopy = tmpCopy->next;
-                    tmpLocal->next = new Element<int>(tmpCopy->data);
+                    tmpLocal->next = new Element<T>(tmpCopy->data);
                     tmpLocal = tmpLocal->next;
                     last = tmpLocal;
                     ++size;

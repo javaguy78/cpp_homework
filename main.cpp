@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//SimpleLinkedList<std::string> sll("test");
+SimpleLinkedList<std::string> sll("test");
 
 void testTemplate() {
     SimpleLinkedList<int> intList;
@@ -15,47 +15,47 @@ void testTemplate() {
 
 }
 
-//void testNewObject() {
-//    sll.add("two");
-//    sll.add("three");
-//    sll.addLast("djs");
-//    sll.addLast("Something new");
-//
-//    cout << "Original List:" << endl;
-//    cout << sll << endl;
-//    cout << "Original Size: " << sll.getSize() << endl;
-//}
+void testNewObject() {
+    sll.add("two");
+    sll.add("three");
+    sll.addLast("djs");
+    sll.addLast("Something new");
 
-// void testCopiedByCopyConstructor() {
-//    SimpleLinkedList copied(sll);
-//    copied.add(2999);
-//    cout << "Copied via Copy Constructor" << endl;
-//    cout << copied << endl;
-//    cout << "Copied Size: " << copied.getSize() << endl;
-//}
+    cout << "Original List:" << endl;
+    cout << sll << endl;
+    cout << "Original Size: " << sll.getSize() << endl;
+}
 
-//void testCopiedByAssignmentOperator() {
-//    SimpleLinkedList assignment;
-//    assignment = sll;
-//    assignment.add(5000);
-//    cout << "Copied via Assignment Operator:" << endl;
-//    cout << assignment << endl;
-//    cout << "Assignment Size: " << assignment.getSize() << endl;
-//}
+ void testCopiedByCopyConstructor() {
+    SimpleLinkedList<std::string> copied(sll);
+    copied.add("2999");
+    cout << "Copied via Copy Constructor" << endl;
+    cout << copied << endl;
+    cout << "Copied Size: " << copied.getSize() << endl;
+}
 
-//void testAssignmentOfEmptyObjectToNewObject() {
-//    SimpleLinkedList empty = SimpleLinkedList();
-//    SimpleLinkedList emptyCopy1 = SimpleLinkedList(empty);
-//    SimpleLinkedList emptyCopy3 = empty;
-//    SimpleLinkedList emptyCopy17 = SimpleLinkedList(empty);
-//    empty.addLast(3);
-//    cout << empty << endl;
-//    cout << emptyCopy1 << endl;
-//    cout << emptyCopy3 << endl;
+void testCopiedByAssignmentOperator() {
+    SimpleLinkedList<std::string> assignment;
+    assignment = sll;
+    assignment.add("5000");
+    cout << "Copied via Assignment Operator:" << endl;
+    cout << assignment << endl;
+    cout << "Assignment Size: " << assignment.getSize() << endl;
+}
+
+void testAssignmentOfEmptyObjectToNewObject() {
+    SimpleLinkedList<int> empty = SimpleLinkedList<int>();
+    SimpleLinkedList<int> emptyCopy1 = SimpleLinkedList<int>(empty);
+    SimpleLinkedList<int> emptyCopy3 = empty;
+    SimpleLinkedList<int> emptyCopy17 = SimpleLinkedList<int>(empty);
+    empty.addLast(3);
+    cout << empty << endl;
+    cout << emptyCopy1 << endl;
+    cout << emptyCopy3 << endl;
 //    emptyCopy17 = emptyCopy3;
-//    empty = empty; //self assignment test
-//    cout << empty << endl;
-//}
+    empty = empty; //self assignment test
+    cout << empty << endl;
+}
 
 //void scratch() {
 //    Element<long> longElement(3.12L);
@@ -73,10 +73,10 @@ void testTemplate() {
 int main() {
 
     testTemplate();
-//    testNewObject();
-//    testCopiedByCopyConstructor();
-//    testCopiedByAssignmentOperator();
-//    testAssignmentOfEmptyObjectToNewObject();
+    testNewObject();
+    testCopiedByCopyConstructor();
+    testCopiedByAssignmentOperator();
+    testAssignmentOfEmptyObjectToNewObject();
 
 //    scratch();
 
