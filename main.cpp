@@ -1,20 +1,30 @@
-include <iostream>
-#include "SimpleLinkedList.h"
+#include <iostream>
+#include "SimpleLinkedList/SimpleLinkedList.h"
 
 using namespace std;
 
-SimpleLinkedList<std::string> sll("test");
+//SimpleLinkedList<std::string> sll("test");
 
-void testNewObject() {
-	sll.add("two");
-    sll.add("three");
-    sll.addLast("djs");
-    sll.addLast("Something new");
+void testTemplate() {
+    SimpleLinkedList<int> intList;
+    intList.add(2);
+    intList.add(235);
+    intList.add(193);
 
-    cout << "Original List:" << endl;
-    cout << sll << endl;
-    cout << "Original Size: " << sll.getSize() << endl;
+    std::cout << intList << std::endl;
+
 }
+
+//void testNewObject() {
+//    sll.add("two");
+//    sll.add("three");
+//    sll.addLast("djs");
+//    sll.addLast("Something new");
+//
+//    cout << "Original List:" << endl;
+//    cout << sll << endl;
+//    cout << "Original Size: " << sll.getSize() << endl;
+//}
 
 // void testCopiedByCopyConstructor() {
 //    SimpleLinkedList copied(sll);
@@ -52,7 +62,7 @@ void testNewObject() {
 //    Element<float> floatElement(3.14F);
 //    Element<std::string> strElement("Awesome String");
 //    Element<SimpleLinkedList> sslElement(sll);
-    // I get it!
+// I get it!
 //    return;
 //}
 
@@ -62,7 +72,8 @@ void testNewObject() {
 
 int main() {
 
-    testNewObject();
+    testTemplate();
+//    testNewObject();
 //    testCopiedByCopyConstructor();
 //    testCopiedByAssignmentOperator();
 //    testAssignmentOfEmptyObjectToNewObject();

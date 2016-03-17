@@ -2,7 +2,8 @@
 #define SIMPLE_LINKED_LIST_H
 
 #include <string>
-Template<typename T>
+
+template<typename T>
 struct Element {
     Element * next;
     T data;
@@ -91,7 +92,7 @@ public:
 
     void printAll() const 
     {
-        std::cout << *this << endl;
+        std::cout << *this << std::endl;
     }
     
     unsigned int getSize() const 
